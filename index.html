@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Prode</title>
+    <title>El Prode - Campeón</title>
     <style>
         * {
             margin: 0;
@@ -19,6 +19,23 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            font-size: 20px;
+            pointer-events: none;
+            animation: fall 3s linear forwards;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
         
         .container {
@@ -36,8 +53,14 @@
         }
         
         .trophy {
-            font-size: 50px;
+            font-size: 60px;
             margin-bottom: 10px;
+            animation: bounce 0.6s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
         
         h1 {
@@ -47,11 +70,16 @@
             font-weight: 700;
         }
         
-        .subtitle {
-            color: #666;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .champion-badge {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin: 15px 0;
+            display: inline-block;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
         }
         
         .ranking {
@@ -78,7 +106,30 @@
         .rank-item.top1 {
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
             border-left-color: #ffd700;
-            padding: 18px;
+            padding: 30px;
+            transform: scale(1.15);
+            transform-origin: left;
+            margin: 20px 0;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% {
+                box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(255, 215, 0, 0.8);
+            }
+        }
+        
+        .rank-item.separator {
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+            padding: 0;
+            margin: 15px 0;
+            border-left: none;
         }
         
         .rank-item.top2 {
@@ -105,6 +156,10 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
+        .rank-item.top1 .position {
+            font-size: 28px;
+        }
+        
         .name {
             flex: 1;
             margin: 0 15px;
@@ -113,7 +168,13 @@
             font-size: 15px;
         }
         
-        .rank-item.top1 .name,
+        .rank-item.top1 .name {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
         .rank-item.top2 .name,
         .rank-item.top3 .name {
             color: white;
@@ -128,16 +189,16 @@
             text-align: right;
         }
         
-        .rank-item.top1 .points,
+        .rank-item.top1 .points {
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 28px;
+        }
+        
         .rank-item.top2 .points,
         .rank-item.top3 .points {
             color: white;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-        
-        .medal {
-            font-size: 24px;
-            margin-right: 8px;
         }
         
         .footer {
@@ -145,111 +206,6 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 2px solid #f0f0f0;
-            color: #999;
-            font-size: 12px;
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-            
-            .rank-item {
-                padding: 12px;
-            }
-            
-            .name {
-                font-size: 13px;
-            }
-            
-            .points {
-                font-size: 16px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="trophy">🏆</div>
-            <h1>El Prode</h1>
-        </div>
-        
-        <div class="ranking">
-            <div class="rank-item top1">
-                <div class="position">🥇</div>
-                <div class="name">Gonzalo Pistone</div>
-                <div class="points">150</div>
-            </div>
-            
-            <div class="rank-item top2">
-                <div class="position">🥈</div>
-                <div class="name">Gabriel Crespillo</div>
-                <div class="points">135</div>
-            </div>
-            
-            <div class="rank-item top3">
-                <div class="position">🥉</div>
-                <div class="name">Claudia Mariana Encinas</div>
-                <div class="points">135</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">4º</div>
-                <div class="name">Martin Colomer</div>
-                <div class="points">132</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">5º</div>
-                <div class="name">Melisa Fresco</div>
-                <div class="points">129</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">6º</div>
-                <div class="name">Lucia Alvarez</div>
-                <div class="points">126</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">7º</div>
-                <div class="name">Johanna Elizabeth M. Contreras</div>
-                <div class="points">105</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">8º</div>
-                <div class="name">Andrea Verónica Vargas</div>
-                <div class="points">99</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">9º</div>
-                <div class="name">Mariangeles Rodriguez</div>
-                <div class="points">99</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">10º</div>
-                <div class="name">Luciana Diaz Martini</div>
-                <div class="points">93</div>
-            </div>
-            
-            <div class="rank-item">
-                <div class="position">11º</div>
-                <div class="name">Pablo Cohn</div>
-                <div class="points">0</div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            Puntos acumulados
-        </div>
-    </div>
-</body>
-</html>
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 700;
