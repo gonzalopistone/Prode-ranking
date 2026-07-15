@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Prode - Campeón</title>
+    <title>El Prode</title>
     <style>
         * {
             margin: 0;
@@ -68,18 +68,6 @@
             font-size: 32px;
             margin-bottom: 5px;
             font-weight: 700;
-        }
-        
-        .champion-badge {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ff8c42 100%);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 20px;
-            font-weight: 700;
-            margin: 15px 0;
-            display: inline-block;
-            font-size: 16px;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
         }
         
         .ranking {
@@ -206,6 +194,152 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 2px solid #f0f0f0;
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 700;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .trophy {
+                font-size: 50px;
+            }
+            
+            .rank-item.top1 {
+                padding: 20px;
+                transform: scale(1.1);
+            }
+            
+            .rank-item {
+                padding: 12px;
+            }
+            
+            .name {
+                font-size: 13px;
+            }
+            
+            .rank-item.top1 .name {
+                font-size: 16px;
+            }
+            
+            .points {
+                font-size: 14px;
+            }
+            
+            .rank-item.top1 .points {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="trophy">🏆</div>
+            <h1>El Prode</h1>
+        </div>
+        
+        <div class="ranking">
+            <div class="rank-item top1">
+                <div class="position">🥇</div>
+                <div class="name">👑 Gonzalo Pistone 👑</div>
+                <div class="points">156</div>
+            </div>
+            
+            <div class="rank-item separator"></div>
+            
+            <div class="rank-item top2">
+                <div class="position">🥈</div>
+                <div class="name">Claudia Mariana Encinas</div>
+                <div class="points">141</div>
+            </div>
+            
+            <div class="rank-item top3">
+                <div class="position">🥉</div>
+                <div class="name">Gabriel Crespillo</div>
+                <div class="points">135</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">4º</div>
+                <div class="name">Martin Colomer</div>
+                <div class="points">135</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">5º</div>
+                <div class="name">Melisa Fresco</div>
+                <div class="points">135</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">6º</div>
+                <div class="name">Lucia Alvarez</div>
+                <div class="points">129</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">7º</div>
+                <div class="name">Johanna Elizabeth M. Contreras</div>
+                <div class="points">111</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">8º</div>
+                <div class="name">Andrea Verónica Vargas</div>
+                <div class="points">105</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">9º</div>
+                <div class="name">Mariangeles Rodriguez</div>
+                <div class="points">102</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">10º</div>
+                <div class="name">Luciana Diaz Martini</div>
+                <div class="points">99</div>
+            </div>
+            
+            <div class="rank-item">
+                <div class="position">11º</div>
+                <div class="name">Pablo Cohn</div>
+                <div class="points">0</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Puntos acumulados
+        </div>
+    </div>
+    
+    <script>
+        // Crear confeti al cargar
+        function createConfetti() {
+            const emojis = ['🎉', '🎊', '🏆', '⭐', '✨', '🎯', '👑'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.left = Math.random() * window.innerWidth + 'px';
+                    confetti.style.top = '-20px';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+        
+        createConfetti();
+    </script>
+</body>
+</html>
